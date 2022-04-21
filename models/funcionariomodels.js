@@ -66,7 +66,6 @@ class Funcionario{
           })
         });
         return result
-        console.log(result)
       }
 
 

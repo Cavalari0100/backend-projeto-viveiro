@@ -20,5 +20,11 @@ module.exports = app => {
         Postagem.deleteOne(id,res);
     })
 
+    app.get('/onepost/:id', async (req,res)=>{
+        const id = req.params.id;
+        const post = await Postagem.findById(id);
+        res.status(200).send(post);
+    })
+
     
 }
