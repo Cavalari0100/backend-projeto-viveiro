@@ -1,13 +1,13 @@
 const conexao = require('../infraestrutura/conexao')
 const { MongoCliente, ObjectId } = require("mongodb")
-const conecta = conexao.db("noticia").collection("postagens")
+const conecta = conexao.db("noticia").collection("passaro")
 var mongooseConection = require("../infraestrutura/conexaoMongoose")
 const { Error } = require("mongoose")
-const postagens = require("../mongoose/postagens")
+const passaro = require("../mongoose/passaro")
 const { param } = require('express/lib/request')
 
 
-class Postagem {
+class Passaro {
 
     async find() {
         const result = await conecta.find().toArray();
@@ -15,7 +15,7 @@ class Postagem {
     }
 
     async insertOne(document, res) {
-        const doc = new postagens(document)
+        const doc = new passaro(document)
         try {
             await doc.save(function (error, result) {
                 if (error) {
@@ -44,8 +44,7 @@ class Postagem {
         }
     }
     async updateOne(id, data) {
-        
-        const result = await postagens.updateOne({ _id: ObjectId(id) }, { $set: data }).then((result, err) => {
+        const result = await passaro.updateOne({ _id: ObjectId(id) }, { $set: data }).then((result, err) => {
             if (err) {
                 return { status: 400, response: err }
             } else {
@@ -54,25 +53,6 @@ class Postagem {
         })
         return result;
     }   
-    async findById(id, res) {
-        const result = await postagens.findOne({ _id: ObjectId(id) }).then(data => {
-            return ({
-                success: true,
-                data,
-            })
-        }).catch(err => {
-            return ({
-                success: false,
-                data: err,
-            })
-        });
-        return (
-            result
-        )
-        
-    } 
-    
-
 
 }
-module.exports = new Postagem 
+module.exports = new Passaro 

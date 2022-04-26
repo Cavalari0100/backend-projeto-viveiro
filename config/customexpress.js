@@ -6,7 +6,6 @@ const express = require('express') // require é uma função que vem junto com 
 const consign = require('consign')  
                               
 const bodyParser = require('body-parser')
-
 module.exports = () => { //module.exports é como se fosse uma lib em outras linguagens
     const app = express() // guarda a execução do módulo express na variavel app
     

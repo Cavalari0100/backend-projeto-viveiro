@@ -1,7 +1,7 @@
 // conectado com o cluster mongocloud
 var mongodb= require('mongodb');
 var MongoClient= mongodb.MongoClient
-const uri =  "mongodb+srv://administrador:XbkKL5Jx7TTKyYm3@cluster0.abliz.mongodb.net/noticia"
+const uri =  "mongodb+srv://administrador:b7LPZKQSanElSzx4@cluster0.abliz.mongodb.net/noticia"
 const conexao = new MongoClient(uri)
 module.exports =  conexao
 
@@ -10,7 +10,7 @@ async function main(){
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
      * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
      */
-     const uri =  "mongodb+srv://administrador:XbkKL5Jx7TTKyYm3@cluster0.abliz.mongodb.net/noticia";
+     const uri =  "mongodb+srv://administrador:b7LPZKQSanElSzx4@cluster0.abliz.mongodb.net/noticia";
  
     const client = new MongoClient(uri);
  

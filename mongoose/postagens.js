@@ -14,6 +14,11 @@ let postagens = mongoose.Schema({
         type: String,
         required:[true,"autor is required"]
     },
+    imagemostagem:
+    {
+        data: Buffer,
+        contentType: String
+    }
 },
     {
         timestamps: true

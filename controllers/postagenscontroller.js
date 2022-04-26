@@ -1,6 +1,4 @@
 const Postagem = require("../models/postagensmodel")
-
-
 module.exports = app => {
     app.get('/postagem', async(req,res) => {
         const response = await Postagem.find(); 
@@ -20,11 +18,10 @@ module.exports = app => {
         Postagem.deleteOne(id,res);
     })
 
-    app.get('/onepost/:id', async (req,res)=>{
+    app.get('/postagem/:id', async (req,res)=>{
         const id = req.params.id;
         const post = await Postagem.findById(id);
         res.status(200).send(post);
     })
-
-    
+      
 }
