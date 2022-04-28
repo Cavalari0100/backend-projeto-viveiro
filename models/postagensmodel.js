@@ -58,7 +58,9 @@ class Postagem {
         const result = await postagens.findOne({ _id: ObjectId(id) }).then(data => {
             return ({
                 success: true,
-                data,
+                titulo : data.titulo,
+                conteudo: data.conteudo,
+                autor: data.autor
             })
         }).catch(err => {
             return ({
