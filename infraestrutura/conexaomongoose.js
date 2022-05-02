@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var mongooseConection = mongoose.connect("mongodb+srv://administrador:b7LPZKQSanElSzx4@cluster0.abliz.mongodb.net/noticia", {
+var mongooseConection = mongoose.connect("mongodb+srv://Administrador:utub6lttfJEe8SSS@cluster0.lbgxy.mongodb.net/iberia_web_site", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

@@ -1,7 +1,7 @@
 {
-  "name": "backendprojetoviveiro",
+  "name": "backendprojetoiberia",
   "version": "1.0.0",
-  "description": "projeto viveiro para usina iberia, iniciado em 12/04/22;",
+  "description": "projeto website iberia para usina iberia, iniciado em 29/04/22;",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",

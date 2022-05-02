@@ -1,12 +1,10 @@
-const Funcionario = require("../models/funcionariomodels")
-
-
+const Funcionario = require("../models/funcionariomodel")
 module.exports = app => {
     app.get('/funcionario', async(req,res) => {
         const response = await Funcionario.find(); 
         res.status(200).send(response);
     })
-    app.post('/createfuncionario', (req,res) =>{
+    app.post('/novafuncionario', (req,res) =>{
         document = req.body
         Funcionario.insertOne(document,res)
     }) 
@@ -19,11 +17,11 @@ module.exports = app => {
         id = req.params.id;
         Funcionario.deleteOne(id,res);
     })
-    app.post('/findemail',(req,res)=>{
-        document = req.body
-        Funcionario.findByEmail(document,res);
 
-    }) 
-
-    
+    app.get('/funcionario/:id', async (req,res)=>{
+        const id = req.params.id;
+        const post = await Funcionario.findById(id);
+        res.status(200).send(post);
+    })
+      
 }

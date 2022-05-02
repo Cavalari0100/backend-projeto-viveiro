@@ -1,7 +1,7 @@
 const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose")
 
-let postagens = mongoose.Schema({
+let postagemtelemetria = mongoose.Schema({
     titulo: {
         type: String,
         required: [true, "titulo is required"]
@@ -13,11 +13,15 @@ let postagens = mongoose.Schema({
     autor: {
         type: String,
         required:[true,"autor is required"]
-    },   
+    },
+    categoria: {
+        type: String,
+        required:[true,"categoria is required"]
+    },    
 },
     {
         timestamps: true
     }
 
 )
-module.exports = mongoose.model("Postagens", postagens, 'postagens');
+module.exports = mongoose.model("Postagemtelemetria", postagemtelemetria, 'postagemtelemetria');

@@ -1,13 +1,13 @@
 const conexao = require('../infraestrutura/conexao')
 const { MongoCliente, ObjectId } = require("mongodb")
-const conecta = conexao.db("noticia").collection("passaro")
+const conecta = conexao.db("iberia_web_site").collection("postagemtelemetria")
 var mongooseConection = require("../infraestrutura/conexaoMongoose")
 const { Error } = require("mongoose")
-const passaro = require("../mongoose/passaro")
+const postagemtelemetria = require("../mongoose/postagemTelemetria")
 const { param } = require('express/lib/request')
 
 
-class Passaro {
+class Postagem {
 
     async find() {
         const result = await conecta.find().toArray();
@@ -15,7 +15,7 @@ class Passaro {
     }
 
     async insertOne(document, res) {
-        const doc = new passaro(document)
+        const doc = new postagemtelemetria(document)
         try {
             await doc.save(function (error, result) {
                 if (error) {
@@ -44,7 +44,8 @@ class Passaro {
         }
     }
     async updateOne(id, data) {
-        const result = await passaro.updateOne({ _id: ObjectId(id) }, { $set: data }).then((result, err) => {
+        
+        const result = await postagemtelemetria.updateOne({ _id: ObjectId(id) }, { $set: data }).then((result, err) => {
             if (err) {
                 return { status: 400, response: err }
             } else {
@@ -53,6 +54,28 @@ class Passaro {
         })
         return result;
     }   
+    async findById(id, res) {
+        const result = await postagemtelemetria.findOne({ _id: ObjectId(id) }).then(data => {
+            return ({
+                success: true,
+                titulo : data.titulo,
+                conteudo: data.conteudo,
+                autor: data.autor,
+                categoria: data.categoria
+            })
+        }).catch(err => {
+            return ({
+                success: false,
+                data: err,
+            })
+        });
+        return (
+            result
+        )
+        
+    } 
+
+
 
 }
-module.exports = new Passaro 
+module.exports = new Postagem 

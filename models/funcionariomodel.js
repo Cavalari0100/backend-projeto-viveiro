@@ -1,9 +1,9 @@
 const conexao = require('../infraestrutura/conexao')
 const { MongoCliente, ObjectId } = require("mongodb")
-const conecta = conexao.db("iberia_web_site").collection("postagens")
+const conecta = conexao.db("iberia_web_site").collection("funcionario")
 var mongooseConection = require("../infraestrutura/conexaoMongoose")
 const { Error } = require("mongoose")
-const postagens = require("../mongoose/postagens")
+const funcionario = require("../mongoose/funcionario")
 const { param } = require('express/lib/request')
 
 
@@ -15,7 +15,7 @@ class Postagem {
     }
 
     async insertOne(document, res) {
-        const doc = new postagens(document)
+        const doc = new funcionario(document)
         try {
             await doc.save(function (error, result) {
                 if (error) {
@@ -45,7 +45,7 @@ class Postagem {
     }
     async updateOne(id, data) {
         
-        const result = await postagens.updateOne({ _id: ObjectId(id) }, { $set: data }).then((result, err) => {
+        const result = await funcionario.updateOne({ _id: ObjectId(id) }, { $set: data }).then((result, err) => {
             if (err) {
                 return { status: 400, response: err }
             } else {
@@ -55,7 +55,7 @@ class Postagem {
         return result;
     }   
     async findById(id, res) {
-        const result = await postagens.findOne({ _id: ObjectId(id) }).then(data => {
+        const result = await funcionario.findOne({ _id: ObjectId(id) }).then(data => {
             return ({
                 success: true,
                 titulo : data.titulo,
@@ -74,8 +74,6 @@ class Postagem {
         )
         
     } 
-
-
 
 }
 module.exports = new Postagem 
