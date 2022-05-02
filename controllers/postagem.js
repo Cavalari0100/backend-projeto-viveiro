@@ -1,6 +1,6 @@
 const Postagem = require("../models/postagensmodel")
 module.exports = app => {
-    app.get('/postagem', async(req,res) => {
+    app.get('/postagen', async(req,res) => {
         const response = await Postagem.find(); 
         res.status(200).send(response);
     })
